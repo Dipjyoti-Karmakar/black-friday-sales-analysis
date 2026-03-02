@@ -1,91 +1,172 @@
 # Black Friday Sales Analysis
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python) ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas) ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+<p align="center"><strong>Data processing and analytics workflow — from raw retail transactions to actionable business insights.</strong></p>
 
-## Overview
-
-This repository contains a reproducible end-to-end analysis of Black Friday retail transactions. It provides a clean, well-documented pipeline to ingest the raw data, perform exploratory data analysis (EDA), implement cleaning and feature engineering, and produce a canonical master dataset ready for modelling and reporting.
-
-The primary objectives are:
-- Clean and consolidate transaction-level data into a single master dataset.
-- Provide analyses and visualizations to surface business insights (top customer segments, highest-value products, spending patterns).
-- Deliver a reproducible artifact for downstream modelling or dashboarding.
-
-## Quick Start
-
-Prerequisites:
-- Python 3.8+ and `pip`, or a comparable Python environment.
-- JupyterLab or Jupyter Notebook for the analysis notebook.
-## Recommended Next Steps
-
-- Add a `requirements.txt` with pinned package versions for reproducible environments.
-- Add CI checks that run lightweight notebook tests or data sanity checks.
-- Convert notebook ETL steps into a parameterized Python script for scheduled runs.
-
-Data quality considerations:
-- Missing values are handled explicitly in the notebook using principled imputation and exclusion rules.
-- Identifiers and categorical fields are coerced to appropriate types before analysis.
-
-## Analysis Pipeline (high level)
-
-1. Ingest raw CSV from `Dataset/`.
-2. Validate and clean fields (null handling, type coercion, inconsistent encodings).
-3. Feature engineering (e.g., customer-level aggregates such as total spend, purchase counts, recency proxies).
-4. Exploratory analysis and visualizations to answer business questions.
-5. Export a reproducible `Pipeline/3.1_Black_Friday_Master_Df.csv` for modelling and reporting.
-
-All processing logic is present in `Pipeline/3.0_Black_Friday_Sales_Analysis.ipynb` and can be adapted into scripts for automation.
-
-## How to Reproduce the Master Dataset
-
-Open and execute the notebook cells sequentially. Key reproducibility notes:
-- All file reads/writes use relative paths inside the repository.
-- Random seeds (where used) are set in the notebook to ensure deterministic results.
-- The final master DataFrame is exported with:
-
-```python
-df.to_csv('Pipeline/3.1_Black_Friday_Master_Df.csv', index=False)
-```
-
-If you plan to automate, extract the notebook cells into a script and parameterize input/output paths.
-
-## Key Business Questions Addressed
-
-- Which customer segments contribute the most revenue during Black Friday?
-- What products or product groups are the highest revenue drivers?
-- Can we predict purchase amount from available demographic and product features?
-- What customer cohorts should marketing prioritize for retention or upsell?
-
-## Deliverables
-
-- Cleaned master dataset: `Pipeline/3.1_Black_Friday_Master_Df.csv`.
-- Analysis notebook with EDA, visualizations, and modelling experiments: `Pipeline/3.0_Black_Friday_Sales_Analysis.ipynb`.
-- Optional SQL schema and import script: `Pipeline/2_Black_Friday_Database_Setup.sql`.
-
-## Recommended Next Steps
-
-- Add a `requirements.txt` with pinned package versions for reproducible environments.
-- Add CI checks that run lightweight notebook tests or data sanity checks.
-- Convert notebook ETL steps into a parameterized Python script for scheduled runs.
-
-## Contribution & Governance
-
-Contributions are welcome. Suggested workflow:
-1. Fork the repository.
-2. Create a descriptive branch: `feature/<short-description>`.
-3. Open a pull request with a clear summary and any data/visual artifacts.
-
-## Contact
-
-For questions, collaboration, or commercial inquiries, please contact:
-
-- Dipjyoti Karmakar — https://www.linkedin.com/in/dipjyoti-karmakar-dk/
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pandas-Analytics-150458?style=for-the-badge&logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" />
+  <img src="https://img.shields.io/badge/Status-Completed-2ea44f?style=for-the-badge" />
+</p>
 
 ---
 
-If you would like, I can:
-- Create a `requirements.txt` with pinned versions now.
-- Add a permissive `LICENSE` (MIT) and a short `CONTRIBUTING.md`.
-- Convert the notebook into a runnable Python ETL script and add a small test harness.
+## Executive Summary
 
-Please tell me which of these you'd like me to do next.
+This analysis examines **550,068 Black Friday transactions (~$5B+ revenue)** to determine which demographic and geographic factors meaningfully drive purchasing behavior.
+
+Using statistical validation and feature engineering, the project identifies high-value customer segments and translates findings into practical business recommendations.
+
+## Overview
+
+The workflow:
+1. Ingest raw CSV data  
+2. Clean and standardize transactional records  
+3. Engineer analytical features  
+4. Validate hypotheses using statistical testing  
+5. Deliver executive-ready dashboards in Power BI
+
+### Key Outcomes
+
+- Identified the **"Power Consumer"** profile: Male, 26–35 years, City B, 1–2 year resident  
+- Statistically validated spending drivers using Welch’s T-Test and ANOVA  
+- Engineered advanced features including **Customer Lifetime Value (CLV)** and **Category Breadth**  
+- Built a multi-page Power BI dashboard for executive and marketing stakeholders  
+
+---
+
+## Architecture
+
+The pipeline is designed for reproducibility and clarity, separating raw data, transformation logic, and reporting layers.
+
+**Data Flow**
+
+```
+Raw CSV (data/raw)
+        ↓
+Processing & Feature Engineering (src/)
+        ↓
+Processed Master Dataset (data/processed)
+        ↓
+Statistical Analysis (Jupyter)
+        ↓
+Interactive Dashboard (Power BI)
+```
+
+---
+
+## Project Structure
+
+```
+black-friday-sales-analysis/
+│
+├── data/
+│   ├── raw/                        # Original dataset
+│   ├── interim/                    # Temporary outputs
+│   └── processed/                  # Cleaned master dataset
+│
+├── notebooks/
+│   └── black_friday_sales_analysis.ipynb
+│
+├── reports/
+│   ├── figures/                    # Dashboard screenshots
+│   └── dashboard.pbix              # Power BI file
+│
+├── sql/
+│   └── mysql_schema.sql            # Database schema
+│
+├── src/
+│   ├── __init__.py
+│   ├── data_processing.py          # Cleaning & feature engineering
+│   └── pipeline.py                 # Pipeline orchestration
+│
+├── tests/
+│   └── test_pipeline.py
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+
+---
+
+## Methodology
+
+| Phase | Tools | Purpose |
+|-------|-------|----------|
+| Ingestion | Python, pandas | Load and validate raw dataset |
+| Cleaning | pandas, NumPy | Handle nulls and normalize categorical fields |
+| Feature Engineering | pandas | CLV, Category Breadth, Loyalty metrics |
+| Statistical Testing | SciPy | Welch’s T-Test, One-Way ANOVA |
+| Visualization | Power BI | Interactive executive & marketing dashboards |
+
+---
+
+## Dashboard Preview
+
+<p align="center">
+  <img src="./reports/figures/powerbi_dashboard_executive.png" width="85%" alt="Executive Dashboard" />
+</p>
+
+<p align="center">
+  <img src="./reports/figures/powerbi_dashboard_marketing.png" width="85%" alt="Marketing Dashboard" />
+</p>
+
+---
+
+## Key Business Insights
+
+Demographic and geographic segmentation significantly influence revenue, while some commonly assumed factors show minimal practical impact.
+
+- **Gender impacts spending** — males spend more on average  
+- **City category drives revenue** — City B leads in total sales  
+- **Marital status has no significant effect**  
+- **Age group 26–35 dominates revenue contribution**  
+- Tenure shows statistical significance but weak business impact  
+
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/<your-username>/black-friday-sales-analysis.git
+cd black-friday-sales-analysis
+
+python -m venv .venv
+.venv\Scripts\activate   # Windows
+
+pip install -r requirements.txt
+
+python -m src.pipeline
+
+jupyter notebook notebooks/black_friday_sales_analysis.ipynb
+```
+
+> Ensure `black_friday_sales_raw.csv` is placed inside `data/raw/` before running the pipeline.
+
+---
+
+## Reproducibility
+
+The project is structured so the processed dataset can be regenerated at any time using:
+
+```bash
+python -m src.pipeline
+```
+
+All transformation logic is isolated inside the `src/` directory, ensuring separation between analysis notebooks and production logic.
+
+---
+
+## Tech Stack
+
+Python • pandas • NumPy • SciPy • MySQL • Jupyter • Power BI
+
+---
+
+## Author
+
+**Dipjyoti Karmakar**  
+Data Analyst | Analytics & Business Intelligence  
+[LinkedIn Profile](https://www.linkedin.com/in/dipjyoti-karmakar-dk/)
