@@ -130,7 +130,7 @@ Demographic and geographic segmentation significantly influence revenue, while s
 ## Quick Start
 
 ```bash
-git clone https://github.com/<your-username>/black-friday-sales-analysis.git
+git clone https://github.com/Dipjyoti-Karmakar/black-friday-sales-analysis.git
 cd black-friday-sales-analysis
 
 python -m venv .venv
