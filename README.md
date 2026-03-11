@@ -11,6 +11,12 @@ The primary objectives are:
 - Provide analyses and visualizations to surface business insights (top customer segments, highest-value products, spending patterns).
 - Deliver a reproducible artifact for downstream modelling or dashboarding.
 
+## Clone the repository
+
+```bash
+git clone https://github.com/Dipjyoti-Karmakar/black-friday-sales-analysis.git
+```
+
 ## Quick Start
 
 Prerequisites:
