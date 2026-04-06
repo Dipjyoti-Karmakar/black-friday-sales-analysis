@@ -1,6 +1,6 @@
 # Black Friday Sales Analysis
 
-<p align="center"><strong>Data processing and analytics workflow — from raw retail transactions to actionable business insights.</strong></p>
+<p align="center"><strong>Data processing and analytics workflow - from raw retail transactions to actionable business insights.</strong></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
@@ -119,8 +119,8 @@ black-friday-sales-analysis/
 
 Demographic and geographic segmentation significantly influence revenue, while some commonly assumed factors show minimal practical impact.
 
-- **Gender impacts spending** — males spend more on average  
-- **City category drives revenue** — City B leads in total sales  
+- **Gender impacts spending** - males spend more on average  
+- **City category drives revenue** - City B leads in total sales  
 - **Marital status has no significant effect**  
 - **Age group 26–35 dominates revenue contribution**  
 - Tenure shows statistical significance but weak business impact  
