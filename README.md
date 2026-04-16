@@ -34,7 +34,11 @@ root/
    pip install -r requirements.txt
    ```
 3. Copy config/.env.example to config/.env and update your variables.
-4. Run the data ingestion/transformation scripts under /src.
+4. Prepare the environment (activate virtualenv / install requirements) and then run the data ingestion and transformation scripts under /src:
+   ```bash
+   python -m src.ingestion.pipeline
+   python -m src.transformation.data_processing
+   ```
 
 ## Usage
 - Raw data lives in data/raw/ while the finalized tables are saved to data/processed/.

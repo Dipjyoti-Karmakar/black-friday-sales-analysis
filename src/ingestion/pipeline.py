@@ -8,8 +8,8 @@ Purpose: Ingest the raw Black Friday CSV, apply cleaning rules,
 
 Usage
 -----
-    python src/data_pipeline.py                       # defaults
-    python src/data_pipeline.py --input data/raw/black_friday_sales_raw.csv \
+    python -m src.ingestion.pipeline                       # defaults
+    python -m src.ingestion.pipeline --input data/raw/black_friday_sales_raw.csv \
                                 --output data/processed/black_friday_sales_master.csv
 """
 
@@ -68,10 +68,10 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
         if col in df.columns:
             df[col] = df[col].fillna(0).astype(int)
 
-    # Stay_In_Current_City_Years: '4+' → 4, then cast to int
+    # Stay_In_Current_City_Years: '4+' -> 4, then cast to int
     col_stay = "STAY_IN_CURRENT_CITY_YEARS"
     if col_stay in df.columns:
-        df[col_stay] = df[col_stay].replace("4+", "4").astype(int)
+        df[col_stay] = pd.to_numeric(df[col_stay].replace("4+", "4"), errors='coerce').astype("Int64")
 
     print("[CLEAN] Missing values imputed · dtypes coerced")
     return df

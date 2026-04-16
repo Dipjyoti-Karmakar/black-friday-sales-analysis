@@ -2,59 +2,47 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
 # Virtual environments
 .venv/
 venv/
 env/
 ENV/
-
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb_checkpoints
-
 # Distribution / packaging
 build/
 dist/
 *.egg-info/
 .eggs/
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
 # Unit test / coverage reports
 .pytest_cache/
 coverage.xml
 htmlcov/
-
 # mypy
 .mypy_cache/
-
 # IDEs and editors
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
-
 # OS files
 .DS_Store
 Thumbs.db
-
 # Environment files
-.env
 .env.*
-
 # Database files
 *.sqlite3
 *.db
-
 # Misc
 *.log
 debug.log
 # Large data files (keep structure, ignore heavy CSVs)
 # data/raw/*.csv
 # data/processed/*.csv
+ 
 .env
-
-.env
+desktop.ini
