@@ -55,3 +55,6 @@ debug.log
 # Large data files (keep structure, ignore heavy CSVs)
 # data/raw/*.csv
 # data/processed/*.csv
+.env
+
+.env
