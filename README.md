@@ -29,12 +29,20 @@ root/
 
 ## Setup Instructions
 1. Clone the repository to your local machine.
-2. Create your virtual environment and install dependencies:
+2. Create and activate your virtual environment, then install dependencies:
    ```bash
+   # Unix/macOS
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+
+   # Windows
+   python -m venv venv
+   .\venv\Scripts\activate
    pip install -r requirements.txt
    ```
 3. Copy config/.env.example to config/.env and update your variables.
-4. Prepare the environment (activate virtualenv / install requirements) and then run the data ingestion and transformation scripts under /src:
+4. Run the data ingestion and transformation scripts under /src:
    ```bash
    python -m src.ingestion.pipeline
    python -m src.transformation.data_processing
